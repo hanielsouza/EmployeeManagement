@@ -7,7 +7,7 @@ Uma API RESTful para gerenciamento de funcionários desenvolvida com .NET 8.
 ### Backend Framework
 - .NET 8.0
 - ASP.NET Core Web API
-- C# 12
+- C#
 
 ### Arquitetura e Padrões
 - Clean Architecture
