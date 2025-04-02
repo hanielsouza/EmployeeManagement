@@ -15,32 +15,9 @@ Uma API RESTful para gerenciamento de funcionários desenvolvida com .NET 8.
   - Application Layer: Casos de uso e interfaces
   - Infrastructure Layer: Implementações técnicas
   - API Layer: Controllers e configurações da API
-- SOLID Principles
 - Dependency Injection
 - Repository Pattern
 - DTO Pattern
-
-### Estrutura do Projeto
-```
-EmployeeManagement/
-├── EmployeeManagement.Domain/        # Camada de domínio
-│   ├── Entities/                     # Entidades de domínio
-│   ├── Interfaces/                   # Interfaces de repositório
-│   └── Enums/                        # Enumerações
-│
-├── EmployeeManagement.Application/    # Camada de aplicação
-│   ├── DTOs/                         # Objetos de transferência de dados
-│   ├── Interfaces/                   # Interfaces de serviço
-│   └── Services/                     # Implementação dos casos de uso
-│
-├── EmployeeManagement.Infrastructure/ # Camada de infraestrutura
-│   ├── Data/                         # Contexto e configurações do EF Core
-│   ├── Repositories/                 # Implementação dos repositórios
-│   └── Services/                     # Serviços de infraestrutura
-│
-└── EmployeeManagement.Api/           # Camada de apresentação
-    └── Controllers/                  # Controllers da API
-```
 
 ### Banco de Dados
 - Microsoft SQL Server 2022
@@ -53,19 +30,12 @@ EmployeeManagement/
 - JWT (JSON Web Tokens)
 - Role-based Authorization
 - BCrypt para hash de senhas
-- Claims-based Authentication
 
 ### Logging
 - Serilog
-- Múltiplos sinks:
-  - Console
-  - Arquivo (com rotação diária)
-- Estruturado com suporte a contexto
-- Diferentes níveis de log por namespace
 
 ### Documentação da API
 - Swagger / OpenAPI
-- Documentação detalhada dos endpoints
 
 ### Docker Support
 - Dockerfile multi-stage para build e runtime
@@ -124,13 +94,7 @@ O SQL Server estará disponível em:
 - Três níveis de acesso:
   - Employee: Acesso básico
   - Leader: Pode criar e atualizar funcionários
-  - Director: Acesso total, incluindo deleção
-
-### Logging
-- Logs de operações CRUD
-- Logs de autenticação
-- Logs de erros e exceções
-- Logs de performance
+  - Director: Acesso total
 
 ## Endpoints da API
 
@@ -143,56 +107,3 @@ A documentação completa da API está disponível através do Swagger UI em:
 Os logs da aplicação são armazenados em:
 - Console do container (visualizável através de `docker-compose logs -f api`)
 - Pasta `logs` no diretório do projeto (mapeada como volume)
-
-## Comandos Docker úteis
-
-- Iniciar os serviços:
-```bash
-docker-compose up -d
-```
-
-- Parar os serviços:
-```bash
-docker-compose down
-```
-
-- Visualizar logs da API:
-```bash
-docker-compose logs -f api
-```
-
-- Visualizar logs do banco de dados:
-```bash
-docker-compose logs -f db
-```
-
-- Reconstruir a imagem da API (após alterações no código):
-```bash
-docker-compose build api
-docker-compose up -d api
-```
-
-## Volumes
-
-- `sqlserver_data`: Armazena os dados do SQL Server
-- `./logs`: Armazena os logs da aplicação
-
-## Portas
-
-- API:
-  - 8080: HTTP
-  - 8081: HTTPS
-- SQL Server:
-  - 1433: Porta padrão do SQL Server
-
-## Contribuindo
-
-1. Fork o projeto
-2. Crie sua branch de feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
-## Licença
-
-Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
